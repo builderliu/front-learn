@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <h1>{{message}}</h1>
+        <h2>{{count}}</h2>    
+        <button @click="count++">增加</button>
+        <br>
+
+        <school></school>
+        <school></school>
+        <school></school>
+    </div>
+
+</body>
+
+<script>
+
+const school = Vue.extend({
+    template:`<div><h1>{{addr}}</h1></div>`,
+    data(){
+        return {
+            name:'shsangguigu',
+            addr:'beijing'
+        }
+    }
+
+});
+
+new Vue({
+    el:"#app",
+    data:{
+        message:"hello vue",
+        count:0
+    },
+    components:{
+     school:school   
+    }
+
+
+})
+
+
+</script>
+
+
+</html>
