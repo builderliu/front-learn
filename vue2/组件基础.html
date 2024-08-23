@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./vue.js"></script>
+    <script src="./js/vue.js"></script>
 </head>
 <body>
 
@@ -13,26 +13,43 @@
         <h2>{{count}}</h2>    
         <button @click="count++">增加</button>
         <br>
-
-        <school></school>
-        <school></school>
         <school></school>
     </div>
 
 </body>
-
 <script>
 
+
+
+
+const student = Vue.extend({
+    template:`<div><h1>{{name}}</h1></div>`,
+    data(){
+        return{
+            name:'zhangsan'
+        }
+    }
+
+})
+
 const school = Vue.extend({
-    template:`<div><h1>{{addr}}</h1></div>`,
+    template:`<div><h1>{{addr}}</h1>
+                <student></student>
+                <student></student>
+                <student></student>
+                <student></student>
+                </div>`,
     data(){
         return {
             name:'shsangguigu',
             addr:'beijing'
         }
+    },
+    components:{
+        student
     }
-
 });
+
 
 new Vue({
     el:"#app",
@@ -41,14 +58,9 @@ new Vue({
         count:0
     },
     components:{
-     school:school   
+     school
     }
-
-
 })
 
-
 </script>
-
-
 </html>
